@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#061521">
+  <title>JAN.EXE | Miku-Inspired Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#061521; --panel:#0a2130; --teal:#39e6d0; --cyan:#65cfff;
+      --white:#eaffff; --muted:#a7c0cf; --line:rgba(57,230,208,.28);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif;line-height:1.7;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 80% 10%,rgba(20,174,210,.15),transparent 35%),radial-gradient(ellipse at 10% 60%,rgba(57,230,208,.07),transparent 35%)}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1120px,90%);margin:auto}
+    h1,h2,h3,.logo,.eyebrow{font-family:Orbitron,monospace}
+    .navbar{position:sticky;top:0;z-index:20;background:rgba(4,17,28,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .logo{font-size:1.2rem;letter-spacing:2px;color:var(--teal);font-weight:800}
+    .logo span{color:var(--white)}
+    .nav-links{list-style:none;display:flex;gap:23px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+    .nav-links a:hover{color:var(--teal)}
+    .hero{min-height:680px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:25px;padding-top:55px;padding-bottom:65px;position:relative}
+    .eyebrow{color:var(--teal);font-size:.76rem;letter-spacing:3px;margin-bottom:20px}
+    h1{font-size:clamp(3.3rem,7vw,6rem);line-height:1.04;letter-spacing:-2px}
+    h1 span,.section-title span{color:var(--teal);text-shadow:0 0 24px rgba(57,230,208,.2)}
+    .hero h2{font-size:clamp(1rem,2vw,1.4rem);color:var(--cyan);margin:18px 0}
+    .hero p,.muted{color:var(--muted);max-width:550px}
+    .buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .btn{display:inline-block;padding:11px 19px;border:1px solid var(--teal);border-radius:5px;font-weight:700;font-size:.88rem;transition:.25s}
+    .btn-primary{background:var(--teal);color:#04151e}
+    .btn-outline{color:var(--teal)}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 0 22px rgba(57,230,208,.22)}
+    .microcopy{font-family:Orbitron,monospace;color:var(--teal);font-size:.72rem;letter-spacing:3px;margin-top:27px}
+    .art-wrap{position:relative;min-height:470px;display:grid;place-items:center}
+    .art-frame{position:absolute;inset:5% 0;border:1px solid rgba(57,230,208,.3);border-radius:48% 48% 12px 12px;background:linear-gradient(145deg,rgba(17,91,111,.22),rgba(5,22,35,.5));overflow:hidden}
+    .art-frame:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 29px,rgba(57,230,208,.08) 30px),repeating-linear-gradient(90deg,transparent 0 29px,rgba(57,230,208,.06) 30px)}
+    .orbit{position:absolute;width:90%;aspect-ratio:1;border:1px dashed rgba(57,230,208,.42);border-radius:50%;animation:spin 35s linear infinite}
+    .orbit:after{content:"";position:absolute;top:9%;left:13%;width:12px;height:12px;border-radius:50%;background:var(--teal);box-shadow:0 0 18px var(--teal)}
+    .miku-art{position:relative;z-index:2;width:100%;max-width:520px;max-height:500px;object-fit:contain;filter:drop-shadow(0 0 28px rgba(26,220,231,.23))}
+    .art-label{position:absolute;z-index:3;right:0;bottom:12%;background:rgba(3,18,29,.82);border:1px solid var(--line);padding:10px 14px;color:var(--teal);font-family:Orbitron,monospace;font-size:.7rem;letter-spacing:2px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    section{padding:78px 0;scroll-margin-top:75px;border-top:1px solid rgba(57,230,208,.14)}
+    .section-title{font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:10px}
+    .section-description{color:var(--muted);margin-bottom:30px}
+    .grid-2{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+    .panel{background:linear-gradient(145deg,rgba(10,33,48,.94),rgba(5,22,34,.95));border:1px solid var(--line);border-radius:10px;padding:25px;transition:.25s}
+    .panel:hover{border-color:rgba(57,230,208,.65);transform:translateY(-3px)}
+    .panel h3{font-size:1rem;margin-bottom:12px}
+    .info-list{list-style:none}
+    .info-list li{padding:5px 0;color:var(--muted)}
+    .info-list strong{color:var(--teal)}
+    .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+    .skill-icon{font-size:1.8rem;color:var(--teal);margin-bottom:10px}
+    .skill p,.project p{font-size:.9rem;color:var(--muted)}
+    .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
+    .tag{font-size:.72rem;color:var(--teal);border:1px solid var(--line);padding:3px 8px;border-radius:4px}
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .project-no{font-family:Orbitron,monospace;color:var(--teal);font-size:.75rem;margin-bottom:10px}
+    .project h3{margin-bottom:8px}
+    .project-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px;font-size:.84rem;color:var(--teal)}
+    .timeline{border-left:2px solid var(--line);padding-left:22px;margin:8px 0 0 8px}
+    .timeline-item{position:relative;margin-bottom:24px}
+    .timeline-item:before{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:var(--teal);left:-28px;top:9px;box-shadow:0 0 12px var(--teal)}
+    .date{font-size:.78rem;color:var(--teal);margin:4px 0}
+    .timeline-item p{font-size:.9rem;color:var(--muted)}
+    .contact{text-align:center;padding:42px 24px}
+    .contact p{max-width:600px;margin:12px auto 24px;color:var(--muted)}
+    .contact-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    footer{border-top:1px solid var(--line);padding:23px 0;text-align:center;color:var(--muted);font-size:.8rem}
+    footer span{color:var(--teal)}
+    @media(max-width:850px){.hero{grid-template-columns:1fr;padding-top:65px}.art-wrap{min-height:400px}.miku-art{max-height:410px}.skills{grid-template-columns:repeat(2,1fr)}.grid-2{grid-template-columns:1fr}}
+    @media(max-width:600px){.nav{align-items:flex-start;flex-direction:column;padding:14px 0}.nav-links{gap:13px;font-size:.78rem}.hero{min-height:auto}.art-wrap{min-height:320px}.miku-art{max-height:340px}.skills,.projects{grid-template-columns:1fr}section{padding:58px 0}.panel{padding:20px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+<header class="navbar">
+  <nav class="container nav">
+    <a class="logo" href="#home">JAN<span>.EXE</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li><li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li><li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <section class="container hero" id="home">
+    <div>
+      <div class="eyebrow">HELLO, I'M / SYSTEM ONLINE</div>
+      <h1>JAN<span>.</span></h1>
+      <h2>IT Student &amp; Aspiring Developer</h2>
+      <p>I'm passionate about technology, creative editing, and building digital experiences. I turn ideas into reality through code and creativity.</p>
+      <div class="buttons"><a class="btn btn-primary" href="mailto:YOUR-EMAIL@example.com">✉ Contact Me</a><a class="btn btn-outline" href="#projects">View My Projects ↗</a></div>
+      <div class="microcopy">MUSIC × CODE × CREATIVITY</div>
+    </div>
+    <div class="art-wrap">
+      <div class="art-frame"></div><div class="orbit"></div>
+      <!-- Replace this image with your own licensed Hatsune Miku artwork if desired. -->
+      <img class="miku-art" src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=900&q=85" alt="Neon night sky artwork used as a temporary cyberpunk hero image">
+      <div class="art-label">01 // DREAM × CODE × CREATE</div>
+    </div>
+  </section>
+  <section id="about"><div class="container">
+    <h2 class="section-title">01. <span>About Me</span></h2><p class="section-description">A little introduction to the person behind the screen.</p>
+    <div class="grid-2">
+      <article class="panel"><h3>Who am I?</h3><p class="muted">I'm an Information Technology student interested in web development, software, and digital media. I enjoy learning new tools, solving problems, and creating projects that make an impact.</p><br><p class="muted">My goal is to gain real-world experience, keep improving my skills, and contribute to a team that builds something meaningful.</p></article>
+      <aside class="panel"><h3>Quick Info / 基本情報</h3><ul class="info-list"><li><strong>Field:</strong> Information Technology</li><li><strong>Focus:</strong> Web Development</li><li><strong>Creative:</strong> Video Editing / Design</li><li><strong>Status:</strong> Open to Opportunities</li><li><strong>Location:</strong> Philippines</li></ul></aside>
+    </div>
+  </div></section>
+  <section id="skills"><div class="container">
+    <h2 class="section-title">02. <span>My Skills</span></h2><p class="section-description">Technologies and tools I use or am currently learning. Keep only the skills you can confidently discuss.</p>
+    <div class="skills">
+      <article class="panel skill"><div class="skill-icon">⌘</div><h3>Web Development</h3><p>Building responsive and interactive websites.</p><div class="tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span></div></article>
+      <article class="panel skill"><div class="skill-icon">⚙</div><h3>IT &amp; Technology</h3><p>Exploring software, troubleshooting, and computing.</p><div class="tags"><span class="tag">Computer Basics</span><span class="tag">Networking</span></div></article>
+      <article class="panel skill"><div class="skill-icon">▷</div><h3>Creative Editing</h3><p>Editing videos and designing visual content.</p><div class="tags"><span class="tag">Video Editing</span><span class="tag">Graphic Design</span></div></article>
+      <article class="panel skill"><div class="skill-icon">⌘</div><h3>Soft Skills</h3><p>Communication, teamwork, and problem solving.</p><div class="tags"><span class="tag">Teamwork</span><span class="tag">Adaptability</span></div></article>
+    </div>
+  </div></section>
+  <section id="projects"><div class="container">
+    <h2 class="section-title">03. <span>Featured Projects</span></h2><p class="section-description">Replace these examples with your actual work and live links.</p>
+    <div class="projects">
+      <article class="panel project"><div class="project-no">PROJECT_001</div><h3>Personal Portfolio Website</h3><p>A responsive portfolio built with HTML and CSS to showcase skills, background, and projects.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive</span></div><div class="project-links"><a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></article>
+      <article class="panel project"><div class="project-no">PROJECT_002</div><h3>Creative Video Edit</h3><p>A short-form edit featuring transitions, synchronized visuals, and effects.</p><div class="tags"><span class="tag">Video Editing</span><span class="tag">Visual Design</span></div><div class="project-links"><a href="https://youtube.com/" target="_blank" rel="noopener noreferrer">Add your video link ↗</a></div></article>
+      <article class="panel project"><div class="project-no">PROJECT_003</div><h3>Student Management System</h3><p>Describe an academic application, database, or system you have actually built.</p><div class="tags"><span class="tag">IT Project</span><span class="tag">Problem Solving</span></div><div class="project-links"><a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener noreferrer">Add project repository ↗</a></div></article>
+      <article class="panel project"><div class="project-no">PROJECT_004</div><h3>Future Project</h3><p>Use this card for your next personal project, internship, or experiment.</p><div class="tags"><span class="tag">In Progress</span><span class="tag">Learning</span></div></article>
+    </div>
+  </div></section>
+  <section id="education"><div class="container">
+    <h2 class="section-title">04. <span>Education &amp; Experience</span></h2><p class="section-description">My learning journey and professional development.</p>
+    <div class="panel timeline">
+      <div class="timeline-item"><h3>Bachelor of Science in Information Technology</h3><div class="date">EXPECTED GRADUATION: YEAR</div><p>YOUR SCHOOL NAME — replace this with your actual school, dates, and relevant coursework.</p></div>
+      <div class="timeline-item"><h3>Personal &amp; Academic Projects</h3><div class="date">ONGOING</div><p>Developing practical skills through school activities, independent learning, and creative experimentation.</p></div>
+      <div class="timeline-item"><h3>Seeking Professional Opportunities</h3><div class="date">NEXT MISSION</div><p>Looking to apply my skills, learn from experienced professionals, and contribute to a collaborative team.</p></div>
+    </div>
+  </div></section>
+  <section id="contact"><div class="container"><div class="panel contact">
+    <div class="eyebrow">CONNECTION ESTABLISHED?</div><h2 class="section-title">Let's Build Something <span>Cool.</span></h2>
+    <p>Interested in working together or have an opportunity for me? Feel free to reach out.</p>
+    <div class="contact-links"><a class="btn btn-primary" href="mailto:YOUR-EMAIL@example.com">✉ Email Me</a><a class="btn btn-outline" href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="btn btn-outline" href="https://www.linkedin.com/in/YOUR-USERNAME" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div>
+  </div></div></section>
+</main>
+<footer><div class="container">© 2026 JAN.EXE — Made with <span>♥</span> and Miku energy.</div></footer>
+</body>
+</html>
